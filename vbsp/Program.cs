@@ -13,28 +13,29 @@ namespace vbsp
         static void Main()
         {
             //Call precompiler operation to ensure the STEAMID64 directory exists
-            var ccEnsureSteamIDDirectoryExists = new Process();
-            ccEnsureSteamIDDirectoryExists.StartInfo.FileName = "CCEnsureSteamIDDirectoryExists.exe";
-            ccEnsureSteamIDDirectoryExists.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            ccEnsureSteamIDDirectoryExists.Start();
-            ccEnsureSteamIDDirectoryExists.WaitForExit();
+            /* I will need to write my own version of this section */
+            //var ccEnsureSteamIDDirectoryExists = new Process();
+            //ccEnsureSteamIDDirectoryExists.StartInfo.FileName = "CCEnsureSteamIDDirectoryExists.exe";
+            //ccEnsureSteamIDDirectoryExists.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //ccEnsureSteamIDDirectoryExists.Start();
+            //ccEnsureSteamIDDirectoryExists.WaitForExit();
 
             //Call alternate compilers
-            var ccTagIntermediateCompilerProcess = new Process();
-            ccTagIntermediateCompilerProcess.StartInfo.FileName = "CCTagIntermediateCompiler.exe";
-            ccTagIntermediateCompilerProcess.StartInfo.Arguments = string.Format("\"{0}\"", Environment.GetCommandLineArgs().Last());
-            ccTagIntermediateCompilerProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            ccTagIntermediateCompilerProcess.Start();
-            ccTagIntermediateCompilerProcess.WaitForExit();
+            var ccVilleIntermediateCompilerProcess = new Process();
+            ccVilleIntermediateCompilerProcess.StartInfo.FileName = "CCVilleIntermediateCompiler.exe";
+            ccVilleIntermediateCompilerProcess.StartInfo.Arguments = string.Format("\"{0}\"", Environment.GetCommandLineArgs().Last());
+            ccVilleIntermediateCompilerProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            ccVilleIntermediateCompilerProcess.Start();
+            ccVilleIntermediateCompilerProcess.WaitForExit();
 
 
             //Call standard compiler
-            var portal2Process = new Process();
-            portal2Process.StartInfo.FileName = "vbsp_original.exe";
-            portal2Process.StartInfo.Arguments = Environment.CommandLine.Substring(Environment.CommandLine.IndexOf("exe\"") + 4).Trim();
-            portal2Process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            portal2Process.Start();
-            portal2Process.WaitForExit();
+            var hl2Process = new Process();
+            hl2Process.StartInfo.FileName = "vbsp_original.exe";
+            hl2Process.StartInfo.Arguments = Environment.CommandLine.Substring(Environment.CommandLine.IndexOf("exe\"") + 4).Trim();
+            hl2Process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            hl2Process.Start();
+            hl2Process.WaitForExit();
         }
     }
 }
